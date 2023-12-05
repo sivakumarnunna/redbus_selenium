@@ -85,6 +85,4 @@ public class WebDriverUtils {
         FileUtils.copyFile(srcFile, DestFile);
 		return ImageIO.read(DestFile);
 	}
-	
-	
 }
