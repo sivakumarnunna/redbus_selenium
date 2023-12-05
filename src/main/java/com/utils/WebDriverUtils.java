@@ -80,7 +80,6 @@ public class WebDriverUtils {
 		Assert.assertFalse(hasDiff," screen validation failed at "+image+" and diff size is "+diffSize);
 	}
 	public BufferedImage takeScreenShot(WebElement element,String imagename) throws IOException {
-		System.out.println(element);
 		File srcFile = ((TakesScreenshot)element).getScreenshotAs(OutputType.FILE);
         File DestFile=new File("image/actual/"+imagename+".png");
         FileUtils.copyFile(srcFile, DestFile);

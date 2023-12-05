@@ -1,4 +1,4 @@
-Feature: Test Amazon
+Feature: Test Redbus
 
   Scenario: verify tabs
     Given open website "redbus"
