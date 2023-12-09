@@ -47,8 +47,28 @@ public class RedbusStepDefinitions extends WebDriverUtils {
 	}
 	@Given("verify image Cab Rental")
 	public void verify_cab_rental() throws IOException, InterruptedException {
-		WebElement element = driver.findElement(By.xpath("//*[@class='ld301i23Zx8IXiuZmK4d']"));
+		WebElement element = construct_xpath("class", "ld301i23Zx8IXiuZmK4d");
 		takeScreenShot(element, "redbus_cab_rental");
 		compareImage(element, "redbus_cab_rental");
+	}
+	@Given("verify image Cancel Ticket")
+	public void verify_cancel_ticket() throws IOException, InterruptedException {
+		WebElement element = construct_xpath("class", "cancellation-form-main");
+		takeScreenShot(element, "redbus_cancel_ticket");
+		compareImage(element, "redbus_cancel_ticket");
+	}
+	@Given("select {string}")
+	public void select_dropdown(String value) throws IOException, InterruptedException {
+		WebElement element = construct_xpath("Account");
+		selectText(element,value);
+		
+	}
+	@Given("verify text:")
+	public void verify_text(DataTable dt) throws IOException, InterruptedException {
+		List<String> ls = dt.asList();
+		  for(String st : ls) {
+			verifyTextPresent(st);
+		  }
+		
 	}
 }

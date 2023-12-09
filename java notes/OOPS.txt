@@ -1,0 +1,7 @@
+Java Variables
+A variable is a container which holds the value while the Java program is executed. 
+A variable is assigned with a data type.
+
+Variable is a name of memory location. There are three types of variables in java:
+ local, instance and static.
+There are two types of data types in Java: primitive and non-primitive.

@@ -15,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -40,6 +41,12 @@ public class WebDriverUtils {
 		element.sendKeys(value);
 	}
 	public boolean verifyElementPresent(String name) {
+		if (driver.findElements(By.xpath("//*[text()='" + name + "']")).size() > 0) {
+			return true;
+		}
+		return false;
+	}
+	public boolean verifyTextPresent(String name) {
 		if (driver.findElements(By.xpath("//*[text()='" + name + "']")).size() > 0) {
 			return true;
 		}
@@ -85,4 +92,11 @@ public class WebDriverUtils {
         FileUtils.copyFile(srcFile, DestFile);
 		return ImageIO.read(DestFile);
 	}
+	public void selectText(WebElement we,String value) {
+		Select sel = new Select(we);
+		sel.selectByValue("Cancel Ticket");
+	}
+	
+	
+	
 }
