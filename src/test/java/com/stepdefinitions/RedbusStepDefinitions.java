@@ -53,9 +53,17 @@ public class RedbusStepDefinitions extends WebDriverUtils {
 	}
 	@Given("verify image Cancel Ticket")
 	public void verify_cancel_ticket() throws IOException, InterruptedException {
+		String defaultWindow=driver.getWindowHandle();
+		for(String st : driver.getWindowHandles()) {
+			if(!defaultWindow.equalsIgnoreCase(st)) {
+				driver.switchTo().window(st);
+			}
+		}
 		WebElement element = construct_xpath("class", "cancellation-form-main");
 		takeScreenShot(element, "redbus_cancel_ticket");
 		compareImage(element, "redbus_cancel_ticket");
+		driver.close();
+		driver.switchTo().window(defaultWindow);
 	}
 	@Given("select {string}")
 	public void select_dropdown(String value) throws IOException, InterruptedException {
