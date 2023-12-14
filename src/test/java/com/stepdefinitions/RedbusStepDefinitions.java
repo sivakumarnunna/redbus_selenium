@@ -23,7 +23,6 @@ public class RedbusStepDefinitions extends WebDriverUtils {
 	public void find_tabs(DataTable table) throws IOException {
 		List<String> tabs = table.asList(String.class);
 		for (String tab : tabs) {
-			System.out.println(tab);
 			Assert.assertEquals(verifyElementPresent(tab), true, tab + " not present");
 		}
 	}

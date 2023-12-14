@@ -30,9 +30,7 @@ public class WebDriverUtils {
 	static {
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
-
 		options.addArguments("--disable-notifications");
-
 		driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 	}
@@ -41,9 +39,8 @@ public class WebDriverUtils {
 		driver.get("https://www." + name + ".in");
 	}
 	
-	public void setText(String locator,String value) {
-		WebElement element = driver.findElement(By.xpath("//*[text()='" + locator + "']"));
-		element.sendKeys(value);
+	public void setText(String text,String value) {
+		construct_xpath(text).sendKeys(value);
 	}
 	public boolean verifyElementPresent(String name) {
 		if (driver.findElements(By.xpath("//*[text()='" + name + "']")).size() > 0) {
@@ -68,10 +65,8 @@ public class WebDriverUtils {
 		}
 
 	public void click(String name) {
-		WebElement element = driver.findElement(By.xpath("//*[text()='" + name + "']"));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-		element.click();
+		wait.until(ExpectedConditions.elementToBeClickable(construct_xpath(name))).click();
 	}
 	public BufferedImage takeScreenShot(WebDriver driver, String imagename) throws IOException {
 		TakesScreenshot scrshot = ((TakesScreenshot)driver);
