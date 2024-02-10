@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh "mvn -D clean test"
+                bat "mvn -D clean test"
             }
  
             post {                
