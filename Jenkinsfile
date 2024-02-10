@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                bat "mvn -D clean test"
-            }
+sh 'mvn clean test'            }
  
             post {                
                 // If Maven was able to run the tests, even if some of the test
